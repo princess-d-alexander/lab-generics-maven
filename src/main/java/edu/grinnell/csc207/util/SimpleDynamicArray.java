@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.util;
 
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 /**
@@ -54,9 +55,10 @@ public class SimpleDynamicArray<T> implements DynamicArray<T> {
         newsize *= 2;
       } // while
       this.values = Arrays.copyOf(this.values, newsize);
+      System.err.println("Expanding");
     } // if the array is no big enough
     // And set the values
-    this.values[i] = val;
+    this.values[i] = val; 
   } // set(int, T)
 
   /**
@@ -79,4 +81,21 @@ public class SimpleDynamicArray<T> implements DynamicArray<T> {
     // Get the value
     return this.values[i];
   } // get(int)
-} // class SimpleDynamicArray<T>
+
+  /**
+   * Dynamic Array 
+   * 
+   * 
+   */
+  public void main (String[] args) { 
+    PrintWriter pen = new PrintWriter (System.out, true);
+    DynamicArray<String> strings = new SimpleDynamicArray<>();
+
+    for(int i = 0; i < 10; i++){
+      strings.set(i , "str"); //sets values
+      pen.println("strings[" + i +"}] = " + strings.get(i));
+
+    } //for
+  } 
+
+  } // class SimpleDynamicArray<T>
